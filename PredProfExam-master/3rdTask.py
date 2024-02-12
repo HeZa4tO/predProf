@@ -7,7 +7,7 @@ def create_login(user: str) -> str:
 
 def create_password() -> str:
     n_num = randint(1, 3)
-    n_abc = randint(1, 2)
+    n_abc = randint(1, 3)
     n_ABC = randint(1, 3)
     n_char = 8 - n_abc - n_ABC - n_num
     num = [chr(randint(48, 57)) for _ in range(n_num)]
@@ -29,15 +29,13 @@ def main():
         s.append(create_login(str(s[1])))
         s.append(create_password())
         students.append(s)
-
     r = 'id,Name,titleProject_id,class,score,login,password\n'
-    for id, name, titleProject_id, klass, score, login, password in file_open_students:
-        r += f'{id},{name},{titleProject_id},{klass},{score},{login},{password}'
-        print(r)
 
+    for idd, name, titleProject_id, klass, score, login, password in file_open_students:
+        r += f'{idd},{name},{titleProject_id},{klass},{score},{login},{password}\n'
 
-    # file_redact_students.write(r)
-    # file_redact_students.close()
+    file_redact_students.write(r)
+    file_redact_students.close()
 
 
 if __name__ == '__main__':
