@@ -1,5 +1,5 @@
 def search(_id_project: int, file_name: str) -> str:
-    """Фукнция поиска проекта по id."""
+    """Поиск проекта по id."""
     f = open(file_name, encoding="utf8")
     f.readline()
 
