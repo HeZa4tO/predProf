@@ -2,8 +2,7 @@
 Решение задач предпрофесианального экзамена в 11 классе. 
 Ответы на экзамене необходимо отправлять через github.
 
-[https://t.me/heybeybaa]MyTelegramChanel
-
+[https://t.me/heybeybaaMy](My Telegram Channel)
 ## Структура
 * task.pdf - файл с заданиями.
 * students.csv - данные для заданий.
