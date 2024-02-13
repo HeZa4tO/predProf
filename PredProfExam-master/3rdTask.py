@@ -1,4 +1,6 @@
 from random import randint, shuffle
+import csv
+
 
 def create_login(user: str) -> str:
     data_user = user.split(' ')
@@ -20,22 +22,21 @@ def create_password() -> str:
 
 
 def main():
-    file_open_students = open('students.csv', encoding="utf8")
-    file_redact_students = open('students_new.csv', 'w')
-    students = []
-    h = file_open_students.readline()
-    for i in file_open_students.readlines():
-        s = i.split(',')
-        s.append(create_login(str(s[1])))
-        s.append(create_password())
-        students.append(s)
-    r = 'id,Name,titleProject_id,class,score,login,password\n'
+    with open('students.csv', encoding="utf8") as file_open_students, open('students_new.csv', 'w', encoding="utf8", newline='') as file_redact_students:
+        reader = csv.reader(file_open_students)
+        writer = csv.writer(file_redact_students)
+        students = []
 
-    for idd, name, titleProject_id, klass, score, login, password in file_open_students:
-        r += f'{idd},{name},{titleProject_id},{klass},{score},{login},{password}\n'
+        header = next(reader)   # Пропускаем заголовок
+        header.extend(['login', 'password'])    # Добавление столбцов "login" и "password" в заголовок
+        students.append(header)
 
-    file_redact_students.write(r)
-    file_redact_students.close()
+        for row in reader:
+            row.append(create_login(row[1]))
+            row.append(create_password())
+            students.append(row)
+
+        writer.writerows(students)
 
 
 if __name__ == '__main__':
