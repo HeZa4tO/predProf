@@ -3,11 +3,13 @@ import csv
 
 
 def create_login(user: str) -> str:
+    """Функция генерации логина"""
     data_user = user.split(' ')
     return f'{data_user[0]}_{data_user[1][0]}{data_user[2][0]}'
 
 
 def create_password() -> str:
+    """Функция генерации пароля"""
     n_num = randint(1, 3)
     n_abc = randint(1, 3)
     n_ABC = randint(1, 3)
@@ -21,7 +23,7 @@ def create_password() -> str:
     return ''.join(password)
 
 
-def main():
+def createLoginPassword():
     with open('students.csv', encoding="utf8") as file_open_students, open('students_new.csv', 'w', encoding="utf8", newline='') as file_redact_students:
         reader = csv.reader(file_open_students)
         writer = csv.writer(file_redact_students)
@@ -38,5 +40,6 @@ def main():
 
         writer.writerows(students)
 
+
 if __name__ == '__main__':
-    main()
+    createLoginPassword()

@@ -6,7 +6,7 @@ class Students:
     score = 0
 
 
-file_open_students = open('students.csv')
+file_open_students = open('students.csv', encoding="utf8")
 students = []
 j = 0
 skip = file_open_students.readline()
@@ -19,7 +19,6 @@ for i in file_open_students:
         students[j].student_name = s[1]
         students[j].score = int(s[4])
         j += 1
-
 
 for i in range(len(students)):
     j = i
